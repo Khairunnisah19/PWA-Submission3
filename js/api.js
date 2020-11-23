@@ -174,7 +174,24 @@ function getMatchById() {
       }).then(function(response) {
         if (response) {
           response.json().then(function(data) {
-            if(data.activeCompetitions[0].id == idParam){
+            var homeHTML = '';
+            data.activeCompetitions.forEach(function(competition) {
+              if(competition.id == idParam){
+                    homeHTML += `
+                    <div class="card">
+                    <div class="card-content">
+                      <span class="card-title truncate">${competition.area.name}</span>
+                      <p>${competition.name}</p>
+                      <p>${competition.code}</p>
+                      <p>${competition.plan}</p>
+                    </div>
+                </div>`;
+              }
+          });
+
+
+
+            /*if(data.activeCompetitions[0].id == idParam){
               var homeHTML = `
               <div class="card">
                   <div class="card-content">
@@ -194,7 +211,7 @@ function getMatchById() {
                     <p>${data.activeCompetitions[1].plan}</p>
                   </div>
               </div>`;
-            }
+            }*/
             document.getElementById("body-content").innerHTML = homeHTML;
           });
         }
@@ -212,27 +229,20 @@ function getMatchById() {
           // Objek JavaScript dari response.json() masuk lewat variabel data.
           // Menyusun komponen card artikel secara dinamis
           //data.activeCompetitions.forEach(function(competition) {
-            if(data.activeCompetitions[0].id == idParam){
-              var homeHTML = `
-              <div class="card">
-                  <div class="card-content">
-                    <span class="card-title truncate">${data.activeCompetitions[0].area.name}</span>
-                    <p>${data.activeCompetitions[0].name}</p>
-                    <p>${data.activeCompetitions[0].code}</p>
-                    <p>${data.activeCompetitions[0].plan}</p>
-                  </div>
-              </div>`;
-            }else{
-              var homeHTML = `
-              <div class="card">
-                  <div class="card-content">
-                    <span class="card-title truncate">${data.activeCompetitions[1].area.name}</span>
-                    <p>${data.activeCompetitions[1].name}</p>
-                    <p>${data.activeCompetitions[1].code}</p>
-                    <p>${data.activeCompetitions[1].plan}</p>
-                  </div>
-              </div>`;
-            }
+            var homeHTML = '';
+            data.activeCompetitions.forEach(function(competition) {
+              if(competition.id == idParam){
+                    homeHTML += `
+                    <div class="card">
+                    <div class="card-content">
+                      <span class="card-title truncate">${competition.area.name}</span>
+                      <p>${competition.name}</p>
+                      <p>${competition.code}</p>
+                      <p>${competition.plan}</p>
+                    </div>
+                </div>`;
+              }
+            });
           //});
           document.getElementById("body-content").innerHTML = homeHTML;
           // Kirim objek data hasil parsing json agar bisa disimpan ke indexed db
