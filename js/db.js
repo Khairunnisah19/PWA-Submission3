@@ -13,7 +13,7 @@ function saveForLater(article, id) {
       console.log('sdsd' + article.activeCompetitions);
       var tx = db.transaction("competitions", "readwrite");
       var store = tx.objectStore("competitions");
-      store.add(article.activeCompetitions[id]);
+      store.put(article.activeCompetitions[id]);
       return tx.complete;
     })
     .then(function() {
