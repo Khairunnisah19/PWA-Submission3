@@ -28,7 +28,7 @@ workbox.precaching.precacheAndRoute([
   { url:"/push.js", revision: '1' },
   { url:"/service-worker.js", revision: '1' },
   { url:"/icon.png", revision: '1' },
-  //{ url: '/kisspng-spain-national-football-team-fifa-world-cup-spain-spain-football-team-5b14fff75eaf03.5747164315281029033878.png', revision: '1' },
+  { url: 'https://unpkg.com/snarkdown@1.0.2/dist/snarkdown.umd.js', revision: '1' },
   { url: 'https://fonts.googleapis.com/icon?family=Material+Icons', revision: '1' },
   { url: 'https://fonts.gstatic.com/s/materialicons/v55/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2', revision: '1' }
 ], {
